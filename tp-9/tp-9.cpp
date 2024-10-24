@@ -1,5 +1,6 @@
 #include <iostream>
 #include "Par.h"
+#include "Fraccion.h"
 using namespace std;
 
 
@@ -173,7 +174,7 @@ int aparicionesR(char c, string s){
 
 
 int main() {
-  cout << aparicionesR('a',"Nicolasssaaa") << endl;
+  cout << division(consFraccion(10,5)) << endl;
 }
 
 
