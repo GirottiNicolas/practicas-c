@@ -23,7 +23,24 @@ int denominador(Fraccion f){
 
 // Propósito: devuelve el resultado de hacer la división
 float division(Fraccion f){
-    return(f.numerador / f.denominador);
+    return((float)  (f.numerador) / (f.denominador));
+}
+
+// Propósito: devuelve una fracción que resulta de multiplicar las fracciones
+// (sin simplificar)
+Fraccion multF(Fraccion f1, Fraccion f2){
+    f1.numerador   = (f1.numerador)*(f2.numerador);
+    f1.denominador = (f1.denominador)*(f2.denominador);
+    return(f1);
 }
 
 
+// Propósito: devuelve una fracción que resulta
+// de simplificar la dada por parámetro
+Fraccion simplificada(Fraccion p){
+    
+}
+
+
+// Propósito: devuelve la fracción resultante de sumar las fracciones
+Fraccion sumF(Fraccion f1, Fraccion f2);

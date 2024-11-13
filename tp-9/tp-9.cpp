@@ -174,7 +174,7 @@ int aparicionesR(char c, string s){
 
 
 int main() {
-  cout << division(consFraccion(10,5)) << endl;
+  cout << division(consFraccion(7,2)) << endl;
 }
 
 
