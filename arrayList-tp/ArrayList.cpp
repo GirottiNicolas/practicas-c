@@ -42,7 +42,7 @@ int get(int i, ArrayList xs){
     if (i< xs->cantidad) {
         return(xs->elementos[i]);
     }
-    return -1;
+    return -3;
     
 }
 
@@ -77,9 +77,9 @@ void add(int x, ArrayList xs){
         xs->cantidad++;
     }
     else {
-        -1; // Si se desea agregar igual, podria llamar a resize y agregar el elemento.
+        -2; // Si se desea agregar igual, podria llamar a resize y agregar el elemento.
     }
-    
+
 }
 
 // Borra el último elemento de la lista.
