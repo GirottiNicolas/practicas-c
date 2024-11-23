@@ -31,6 +31,13 @@ int length(LinkedList xs);
 //Agrega un elemento al final de la lista.
 void Snoc(LinkedList xs,int x);
 
+
+/*
+
+INTERFAZ DE ITERADOR
+
+*/
+
 //Apunta el recorrido al primer elemento.
 ListIterator getIterator(LinkedList xs);
 

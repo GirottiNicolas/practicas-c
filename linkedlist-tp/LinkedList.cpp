@@ -66,18 +66,24 @@ int length(LinkedList xs){
 
 //Agrega un elemento al final de la lista.
 void Snoc(LinkedList xs, int x){
-    NodoL* nodo = new NodoL;
-    nodo->elem = x;
-    nodo->siguiente = NULL;
+    NodoL* nodo = new NodoL; // Creo el nodo que se va a agregar
+    nodo->elem = x;          // Añado el valor
+    nodo->siguiente = NULL; // y el siguiente
 
-    IteratorSt* ixs = new IteratorSt;
-    ixs->current = xs->primero;
+    if (xs->primero == NULL) { // Si la lista xs esta vacia
+        xs->primero = nodo;
+    } 
+    else {
+        ListIterator ixs = new IteratorSt;
+        ixs->current = xs->primero; // Inicio el iterador
 
-    while (ixs->current->siguiente != NULL) {
-        ixs->current = ixs->current->siguiente;
+       while (ixs->current->siguiente != NULL) {
+            ixs->current = ixs->current->siguiente;
+        }
+        ixs->current->siguiente = nodo; // Conecto el último nodo con el nuevo nodo
+        delete ixs; // Libero la memoria del iterador
     }
-    ixs->current->siguiente = nodo;
-    delete ixs;
+    xs->cantidad++;   // aumento cantidad de nodos
 }
 
 //Apunta el recorrido al primer elemento.
@@ -88,6 +94,7 @@ ListIterator getIterator(LinkedList xs){
 }
 
 //Devuelve el elemento actual en el recorrido.
+// PRECONDICION: El nodo actual no debe ser NULL.
 int current(ListIterator ixs){
     return ixs->current->elem;
 }
