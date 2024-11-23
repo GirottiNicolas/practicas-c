@@ -86,12 +86,36 @@ void Snoc(LinkedList xs, int x){
     xs->cantidad++;   // aumento cantidad de nodos
 }
 
+/*
+    Costo: O(N) Ya que se realizan N veces operaciones constantes, siendo N la cantidad de elementos que tenga la linked list dada.
+
+                Si bien se realizan multiples operaciones constantes: 
+                            new NodoL -> Al crear el nodo,
+                            nodo->elem = ..            -> asignarle valores a sus campos,
+                            nodo->siguiente = NULL
+                            -> Comprobar que la linked list dada no este vacia
+                            new IteratorSt -> Crear un iterador
+                            Asignarle valor..
+                            Etcetera
+                El foco del costo yace en el caso de que la lista no este vacia, ya que debe recorrer los elementos de dicha lista hasta
+                que el siguiente del nodo actual sea NULL, por eso se deben realizar N veces las operaciones del while que es su condicion 
+                como tambien avanzar hacia el siguiente nodo.
+*/ 
+
+
+
+
+
 //Apunta el recorrido al primer elemento.
 ListIterator getIterator(LinkedList xs){
     IteratorSt* ixs = new IteratorSt;
     ixs->current = xs->primero;
     return ixs;
 }
+// Costo O(1): Ya que las operaciones realizadas son de costo constante, tanto como new Iterator, y asignarle el nodo.
+    // Memoria: Se reserva en la memoria heap un espacio para el registro del iterador.
+
+
 
 //Devuelve el elemento actual en el recorrido.
 // PRECONDICION: El nodo actual no debe ser NULL.
@@ -122,15 +146,41 @@ void DisposeIterator(ListIterator ixs){
 
 //Libera la memoria ocupada por la lista.
 void DestroyL(LinkedList xs){
-    IteratorSt* ixs = new IteratorSt;
-    ixs->current = xs->primero;
-    while (ixs->current != NULL) {
-        ixs->current = xs->primero->siguiente;
-        delete xs->primero;
-        xs->cantidad--;
+    IteratorSt* ixs = new IteratorSt; // Creo el iterador O(1)
+    ixs->current = xs->primero; // Inicializo el iterador O(1)
+    while (ixs->current != NULL) { // Mientras que el iterador no sea NULL O(1)
+        ixs->current = xs->primero->siguiente; // Next O(1)
+        delete xs->primero; 
+        xs->cantidad--; // Es innecesario pero para hacer la costumbre de decrementar
     }
-    delete ixs;
-    delete xs;    
+    delete ixs; // Elimino iterador
+    delete xs;  // Elimino header
 }
 
+/*
+    Costo: O(N) Ya que se realizan N operaciones de costo constante, siendo N la cantidad de elementos que existan en la LinkedList xs.
+                Operaciones constantes: new IteratorSt, inicializar el iterador, la condicion del while, pasar al siguiente nodo del iterador,
+                                        delete xs->primero, incrementar la cantidad, delete iterador y delete header.
+*/
 
+
+/*
+
+void Append(LinkedList xs, LinkedList ys){
+    if(ys->ultimo != NULL){ // Si la segunda lista no es vacia
+        xs->ultimo->siguiente = ys->primero; // 1°
+        xs->ultimo = ys->ultimo; // 2° Cambio el ultimo puntero
+        xs->cantidad += ys->cantidad; // 3° Incremento cantidades
+        delete ys;    // 4° Elimino header ys
+    }
+}
+
+Costo: O(1) -> Ya que las operaciones que se realizan no refieren a la cantidad de elementos de la estructura, sino que se utiliza el manejo de punteros 
+                para las operaciones, y dicho manejo es Constante O(1), como asi tambien lo es acceder a los campos de un registro.
+                    Operaciones realizadas:
+                    - Comprobar que el ultimo nodo de la lista ys no sea NULL (La condicion del if) ,
+                    - Asignar el siguiente del nodo al primer nodo de la lista ys,
+                    - Incrementar cantidades de ambas listas, por lo que se accedio a ambas listas.
+                    - Eliminar header (delete ys)
+                    Todas estas operaciones son O(1). Por lo tanto, la funcion es CONSTANTE.
+*/

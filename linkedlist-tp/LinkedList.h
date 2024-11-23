@@ -58,3 +58,5 @@ void DisposeIterator(ListIterator ixs);
 
 //Libera la memoria ocupada por la lista.
 void DestroyL(LinkedList xs);
+
+
