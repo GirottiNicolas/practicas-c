@@ -1,6 +1,7 @@
 #include <iostream>
 using namespace std;
-#include "linkedlist-tp/LinkedList.h"
+#include "../linkedlist-tp/LinkedList.h"
+
 
 
 struct NodoS ;
