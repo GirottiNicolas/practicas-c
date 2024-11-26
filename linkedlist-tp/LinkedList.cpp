@@ -100,6 +100,11 @@ void Snoc(LinkedList xs, int x){
                 El foco del costo yace en el caso de que la lista no este vacia, ya que debe recorrer los elementos de dicha lista hasta
                 que el siguiente del nodo actual sea NULL, por eso se deben realizar N veces las operaciones del while que es su condicion 
                 como tambien avanzar hacia el siguiente nodo.
+
+    Memoria: Se crea un espacio en memoria heap destinado al Nodo que se va a agregar y al Iterador, 
+                pero el iterador es eliminado, por lo tanto su espacio es temporal. 
+
+
 */ 
 
 
